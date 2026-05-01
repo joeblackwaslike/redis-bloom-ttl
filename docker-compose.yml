@@ -1,0 +1,41 @@
+services:
+  redis-ttl-bloom:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: joeblackwaslike/redis-ttl-bloom:latest
+    container_name: redis-ttl-bloom
+    ports:
+      - "6379:6379"
+    volumes:
+      # Persist Redis data
+      - redis-data:/data
+      # Optional: Mount custom config (uncomment to override)
+      # - ./redis.conf:/usr/local/etc/redis/redis.conf:ro
+    environment:
+      - TZ=America/New_York
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
+
+
+  # Optional: Redis Commander for GUI management
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    container_name: redis-commander
+    environment:
+      - REDIS_HOSTS=local:redis-ttl-bloom:6379
+    ports:
+      - "8081:8081"
+    depends_on:
+      - redis-ttl-bloom
+    restart: unless-stopped
+
+volumes:
+  redis-data:
+    driver: local
+

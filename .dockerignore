@@ -1,0 +1,37 @@
+
+## `.dockerignore`
+```
+# Rust build artifacts
+target/
+Cargo.lock
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# Documentation
+README.md
+docs/
+*.md
+
+# Tests
+tests/
+test_*.py
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+
+# Logs
+*.log

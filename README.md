@@ -1,5 +1,8 @@
 # Production-Ready Redis Bloom Filter Module with Individual TTL
 
+[![Discord](https://img.shields.io/discord/1486035859747897414?logo=discord&label=Discord&color=5865F2)](https://discord.com/channels/1486035859747897414/1509515337417097277) [![Join Discord](https://img.shields.io/badge/Discord-Join%20Server-5865F2?logo=discord&logoColor=white)](https://discord.gg/Fjc9zYHZyV)
+
+
 This is a sophisticated implementation perfect for JWT blacklisting. Since standard bloom filters don't support deletion (required for TTL), I'll implement a **time-partitioned bloom filter** approach that organizes items into buckets based on expiration time.
 
 ## Architecture Overview
